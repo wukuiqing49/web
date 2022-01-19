@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <title>访客登记</title>
+
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 600px)" href="style/css/css600.css" />
+
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/jquery.params.js"></script>
+    <script>
+        $(function() {
+            getMessage()
+        })
+
+        function getMessage() {
+            var message = $.query.get("message");
+            if (message == "") {
+                message = "提交失败"
+            }
+            $("#message").text(message);
+
+        }
+    </script>
+
+    <style>
+        .p {
+            margin-top: 60px;
+            font-size: 38px;
+            font-family: Source Han Sans CN;
+            color: #999999;
+        }
+        
+        .p2 {
+            margin-top: 33px;
+            font-size: 48px;
+            font-family: Source Han Sans CN;
+            font-weight: bold;
+            color: #222222;
+        }
+        
+        .div {
+            text-align: center;
+            width: 100;
+        }
+        
+        .img {
+            width: 183px;
+            height: 183px;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="div">
+        <img class="img" src="../img/iv_img_fail.png" title="图片加载异常" />
+
+        <p class="p">出入社区及单位来访人员申请表</p>
+        <p class="p2" id="message"></p>
+    </div>
+
+</body>
+
+</html>
