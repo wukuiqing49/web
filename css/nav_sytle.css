@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.con {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    margin-top: -51px;
+    left: 50%;
+    margin-left: -202px;
+}
+
+button:hover {
+    background-color: #f5f5f5;
+}
+
+span {
+    display: inline-block;
+    width: 96%;
+    height: 50px;
+    margin-left: 2%;
+    line-height: 50px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+}
+
+span:hover {
+    background-color: #f5f5f5;
+}
+
+.bgDiv {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .5;
+    position: fixed;
+    display: none;
+    z-index: 99;
+    bottom: 0;
+}
+
+.leftNav {
+    width: 50%;
+    max-width: 400px;
+    height: 100%;
+    background-color: #fff;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: -50%;
+}
+
+.rightNav {
+    width: 50%;
+    max-width: 400px;
+    height: 100%;
+    background-color: #fff;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: -50%;
+}
+
+.upNav {
+    width: 100%;
+    height: 40%;
+    background-color: #fff;
+    position: fixed;
+    z-index: 999;
+    top: -40%;
+}
+
+.downNav {
+    width: 100%;
+    height: 30%;
+    size: 42px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 42px;
+    background-color: white;
+    color: #cccccc;
+    position: fixed;
+    z-index: 999;
+    bottom: -40%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #F5F6F7
+}
+
+.div {
+    padding-left: 121px;
+    padding-right: 121px;
+    padding-top: 40px;
+    background-color: white;
+}
+
+.div2 {
+    width: 100;
+    padding-left: 121px;
+    padding-right: 121px;
+    margin-top: 0px;
+    padding-top: 0px;
+    background-color: white;
+}
+
+.font1 {
+    font-size: 42px;
+    font-family: Source Han Sans CN;
+    color: #222222;
+}
+
+.font2 {
+    font-size: 42px;
+    font-family: Source Han Sans CN;
+    color: #FF0000;
+}
+
+.font3 {
+    width: 200px;
+    text-align: left;
+    font-size: 42px;
+    color: #222222;
+}
+
+.form {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.form2 {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.hr {
+    margin-top: 40px;
+    padding-left: 121px;
+    padding-right: 121px;
+    background-color: #cccccc;
+    height: 1px;
+}
+
+.p {
+    padding-left: 121px;
+    padding-right: 121px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 38px;
+    font-family: Source Han Sans CN;
+    color: #999999;
+    line-height: 60px;
+}
+
+.button {
+    align-content: center;
+    color: white;
+    font-size: 42px;
+    width: 840px;
+    height: 120px;
+    border: transparent;
+    background: linear-gradient(90deg, #249CF2 0%, #61CEF2 100%);
+    border-radius: 60px;
+}
+
+.input {
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: 0;
+    outline: none;
+    background-color: white;
+    color: #cccccc;
+    margin-left: 20px;
+    font-size: 42px;
+}
+
+.location {
+    width: 100%;
+    text-align: left;
+    background-color: white;
+    color: #cccccc;
+    padding-left: 30px;
+    font-size: 42px;
+}
+
+input::-webkit-input-placeholder {
+    /* placeholder颜色  */
+    color: #cccccc;
+    /* placeholder字体大小  */
+    font-size: 42px;
+}

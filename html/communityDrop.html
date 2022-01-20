@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 600px)" href="style/css/css600.css" />
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/jquery.params.js"></script>
+<script>
+    $(function() {
+        GetCommunityDrop()
+    })
+
+    function GetCommunityDrop() {
+
+
+        $.ajax({
+            type: "get",
+            url: "http://119.18.207.153:8085/App/Staff/GetCommunityDrop",
+            async: true,
+            dataType: 'json',
+            success: function(data) {
+                showData(data)
+            },
+            error: function(data) {
+                alert(data.message)
+            }
+
+        })
+    }
+
+    function showData(data) {
+        var list = data.data
+        var child
+        var content = document.getElementById("div_content")
+        for (var i = 0; i < 30; i++) {
+            child += "<p class='p' id=" + "itemId" + i + "click=(onclick(" + list[0].name + "))" + ">" + list[0].name + "</p>"
+            child += "<hr color='#cccccc' size='1px'/>"
+        }
+        content.innerHTML = child
+    }
+
+    function onclick(data) {
+
+    }
+</script>
+
+<head>
+    <meta charset="utf-8">
+    <title>访客登记</title>
+    <style type="text/css">
+        .div {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            height: 50%;
+            width: 100%;
+            background-color: white;
+        }
+        
+        .body {
+            background: #0f0;
+            background-color: transparent;
+        }
+        
+        .p {
+            font-size: 38px;
+            text-align: center;
+            height: 60px;
+            font-family: Source Han Sans CN;
+            color: black;
+        }
+    </style>
+</head>
+
+
+<body class="body">
+
+    <div class="div">
+        <div id="div_content">
+
+        </div>
+    </div>
+
+</body>
+
+</html>

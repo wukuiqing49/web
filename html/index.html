@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 600px)" href="style/css/css600.css" />
+<link href="../css/nav_sytle.css" rel="stylesheet">
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../js/nav.js"></script>
 <script type="text/javascript">
     function submit() {
-
         var uname = jQuery("#u_name").val()
         if (uname == "") {
             alert("用户名为空")
             return
         }
-        var residentialQuarter = jQuery("#residentialQuarter").val()
-        if (residentialQuarter == "") {
-            alert("请输入被访人所在小区")
+        var residentialQuarter = jQuery("#residentialQuarter").text()
+        if (residentialQuarter == "请输入被访人所在小区 ") {
+            alert("请输入被访人所在小区 ")
             return
         }
-        var buildNo = jQuery("#buildNo").val()
-        if (buildNo == "") {
-            alert("请输入被访人所在楼号")
+
+        var buildNo = jQuery("#buildNo").text()
+        if (buildNo == "请输入被访人所在楼号 ") {
+            alert("请输入被访人所在楼号 ")
             return
         }
 
@@ -87,116 +92,145 @@
 
         })
     }
+
+    function GetCommunityDrop() {
+        $.ajax({
+            type: "get",
+            url: "http://119.18.207.153:8085/App/Staff/GetCommunityDrop",
+            async: true,
+            dataType: 'json',
+            success: function(data) {
+
+                if (data.code == 200) {
+                    showView(data, 1)
+                } else {
+                    alert(data.message)
+                }
+
+            },
+            error: function(data) {
+                alert(data.message)
+            }
+        })
+
+
+    }
+
+    function GetGetBuildDrop() {
+
+        var content = jQuery("#residentialQuarter").text()
+        if (content == "请输入被访人所在小区 ") {
+            alert("请输入被访人所在小区 ")
+            return
+        }
+        var params = 'communityId=' + xqId
+        $.ajax({
+            type: "get",
+
+            url: "http://119.18.207.153:8085/App/Staff/GetBuildDrop?" + params,
+            async: true,
+
+            dataType: 'json',
+            success: function(data) {
+
+                if (data.code == 200) {
+                    showView(data, 2)
+                } else {
+                    alert(data.message)
+                }
+            },
+            error: function(data) {
+                alert(data.message)
+            }
+        })
+
+
+    }
+
+    function onDissmissclick() {
+        showOrdissmiss(false)
+    }
+
+    function showView(data, type) {
+        debugger
+        var list = data.data
+        var child = "<p class='dissmiss' " + " " + "onclick=" + "'onDissmissclick()'" + ">" + '取消' + "</p>"
+        var parentlayout = document.getElementById("downXq")
+            // list.length
+        for (var i = 0; i < list.length; i++) {
+            child += "<p class='p' " + " " + "onclick=onItemclick('" + list[i].name + "," + type + "," + list[i].id + "')" + ">" + list[i].name + "</p>"
+            child += "<hr color='#cccccc' size='1px'/>"
+        }
+        parentlayout.innerHTML = child
+        showOrdissmiss(true)
+    }
+    var xqId = -1
+
+    function onItemclick(ceontent) {
+
+        var data = ceontent.split(",")
+        xqId = data[2]
+        if (data[1] == 1) {
+            jQuery("#residentialQuarter").text(data[0])
+        } else {
+            jQuery("#buildNo").text(data[0])
+        }
+
+        showOrdissmiss(false)
+    }
+
+    function showOrdissmiss(isShow) {
+        if (isShow == true) {
+            $('.downNav').css({
+                bottom: "0px",
+                transition: "bottom 1s"
+            });
+        } else {
+            $('.downNav').css({
+                bottom: "-50%",
+                webkitTransition: "bottom .5s",
+                oTransition: "bottom .5s",
+                mozTransition: "bottom .5s",
+                transition: "bottom .5s"
+            });
+        }
+
+
+
+    }
 </script>
-<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 600px)" href="style/css/css600.css" />
+
 
 
 <head>
     <meta charset="utf-8">
     <title>访客登记</title>
-    <style name type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-            border: 0;
-        }
-        
-        body {
-            height: 100;
-            width: 100;
-            background-color: #F5F6F7
-        }
-        
-        .div {
-            padding-left: 121px;
-            padding-right: 121px;
-            padding-top: 40px;
-            background-color: white;
-        }
-        
-        .div2 {
-            width: 100;
-            padding-left: 121px;
-            padding-right: 121px;
-            margin-top: 0px;
-            padding-top: 0px;
-            background-color: white;
-        }
-        
-        .font1 {
-            font-size: 42px;
-            font-family: Source Han Sans CN;
-            color: #222222;
-        }
-        
-        .font2 {
-            font-size: 42px;
-            font-family: Source Han Sans CN;
-            color: #FF0000;
-        }
-        
-        .font3 {
-            width: 200px;
-            align-content: center;
-            text-align: center;
-            font-size: 42px;
-            color: #222222;
-        }
-        
-        .form {
-            display: flex;
-            margin-top: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .form2 {
-            display: flex;
-            margin-bottom: 40px;
-        }
-        
-        .input {
-            filter: none !important;
-            padding: 10px;
-            text-align: left;
-            border: 0;
-            outline-color: white;
-            lighting-color: white;
-            background-color: white;
-            color: #cccccc;
-            text-decoration-color: #cccccc;
-            margin-left: 20px;
-            font-size: 42px;
-            border: white;
-        }
-        
-        .hr {
-            margin-top: 40px;
-            padding-left: 121px;
-            padding-right: 121px;
-            background-color: #cccccc;
-            height: 1px;
-        }
-        
+    <style>
         .p {
             padding-left: 121px;
             padding-right: 121px;
             padding-top: 20px;
+            text-align: center;
             padding-bottom: 20px;
             font-size: 38px;
             font-family: Source Han Sans CN;
-            color: #999999;
+            color: #222222;
             line-height: 60px;
         }
         
-        .button {
-            align-content: center;
-            color: white;
+        .dissmiss {
+            padding: 20px;
+            text-align: center;
+            font-size: 38px;
+            font-family: Source Han Sans CN;
+            color: #666666;
+            line-height: 60px;
+        }
+        
+        .dissmiss {
+            text-align: left;
             font-size: 42px;
-            width: 840px;
-            height: 120px;
-            border: transparent;
-            background: linear-gradient(90deg, #249CF2 0%, #61CEF2 100%);
-            border-radius: 60px;
+            color: #666666;
         }
     </style>
 
@@ -222,7 +256,8 @@
         <form class="form2">
             <p class="font2" color="#FF0000 ">*</p>
             <p class="font3" color="#FF0000 ">小 区:</p>
-            <input class="input" name="residentialQuarter" id="residentialQuarter" v-model="message " placeholder="请输入被访人所在小区 ">
+            <p onclick="GetCommunityDrop()" class="location" id="residentialQuarter">请输入被访人所在小区 </p>
+
         </form>
         <hr color="#cccccc" size="1px" />
 
@@ -233,7 +268,8 @@
         <form class="form2">
             <p class="font2" color="#FF0000 ">*</p>
             <p class="font3" color="#FF0000 ">楼 号:</p>
-            <input class="input" id="buildNo" v-model="message " placeholder="请输入被访人所在楼号 ">
+            <p class="location" id="buildNo" onclick="GetGetBuildDrop()">请输入被访人所在楼号 </p>
+
         </form>
         <hr color="#cccccc" size="1px" />
 
@@ -299,9 +335,13 @@
         请来访人员出入社区及单位进行自主填表申请授权。个人信息将受严格保护，不会对外泄露，请如实填写。
     </p>
     <div style="text-align: center; margin-bottom: 60px;">
-        <button class="button" type="button" onclick="submit()">提交</button>
+        <button class="button" onclick="submit()">提交</button>
     </div>
 
+    <div class="downNav" id="downXq">
+
+
+    </div>
 
 </body>
 
