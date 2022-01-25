@@ -84,6 +84,7 @@ span:hover {
     position: fixed;
     z-index: 999;
     bottom: -40%;
+    overflow-y: scroll;
 }
 
 * {
