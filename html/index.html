@@ -58,12 +58,12 @@
 
 
         var contentData = {
-            "name": uname,
-            "phone": phone,
+            "name": ownername,
+            "phone": ownerphone,
             "identification": identification,
             "addr": "",
-            "ownername": ownername,
-            "ownerphone": ownerphone,
+            "ownername": uname,
+            "ownerphone": phone,
             "residentialQuarter": residentialQuarter,
             "buildNo": buildNo,
             "room": room,
@@ -71,6 +71,7 @@
             "nodetype": 0
         }
 
+        debugger
         var post = JSON.stringify(contentData)
         $.ajax({
             type: "post",
@@ -80,7 +81,7 @@
             contentType: 'application/json',
             dataType: 'json',
             success: function(data) {
-                if (data.code == 200) {
+                if (data.success == true) {
                     window.location.href = "result_sucess.html"
                 } else {
                     window.location.href = "result_fail.html" + "?message=" + data.message
@@ -158,7 +159,7 @@
         var parentlayout = document.getElementById("downXq")
             // list.length
         for (var i = 0; i < list.length; i++) {
-            child += "<p class='p' " + " " + "onclick=onItemclick('" + list[i].name + "," + type + "," + list[i].id + "')" + ">" + list[i].name + "</p>"
+            child += "<p class='pbottom' " + " " + "onclick=onItemclick('" + list[i].name + "," + type + "," + list[i].id + "')" + ">" + list[i].name + "</p>"
             child += "<hr color='#cccccc' size='1px'/>"
         }
         parentlayout.innerHTML = child
@@ -206,7 +207,7 @@
     <meta charset="utf-8">
     <title>访客登记</title>
     <style>
-        .p {
+        .pbottom {
             padding-left: 121px;
             padding-right: 121px;
             padding-top: 20px;
