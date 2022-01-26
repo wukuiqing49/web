@@ -7,6 +7,14 @@
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="../js/nav.js"></script>
 <script type="text/javascript">
+    //获取连接中的参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return r[2];
+        return "";
+    }
+
     function submit() {
         var uname = jQuery("#u_name").val()
         if (uname == "") {
@@ -55,8 +63,7 @@
             return
         }
 
-
-
+        var sn = getUrlParam("sn")
         var contentData = {
             "name": ownername,
             "phone": ownerphone,
@@ -68,7 +75,8 @@
             "buildNo": buildNo,
             "room": room,
             "nodeid": 0,
-            "nodetype": 0
+            "nodetype": 0,
+            "sn": sn
         }
 
 
@@ -95,6 +103,7 @@
     }
 
     function GetCommunityDrop() {
+
         $.ajax({
             type: "get",
             url: "http://119.18.207.153:8085/App/Staff/GetCommunityDrop",
