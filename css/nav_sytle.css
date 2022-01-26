@@ -179,7 +179,7 @@ body {
     border: 0;
     outline: none;
     background-color: white;
-    color: #cccccc;
+    color: #999999;
     margin-left: 20px;
     font-size: 42px;
 }
@@ -188,14 +188,14 @@ body {
     width: 100%;
     text-align: left;
     background-color: white;
-    color: #cccccc;
+    color: #999999;
     padding-left: 30px;
     font-size: 42px;
 }
 
 input::-webkit-input-placeholder {
     /* placeholder颜色  */
-    color: #cccccc;
+    color: #999999;
     /* placeholder字体大小  */
     font-size: 42px;
 }

@@ -71,7 +71,7 @@
             "nodetype": 0
         }
 
-        debugger
+
         var post = JSON.stringify(contentData)
         $.ajax({
             type: "post",
@@ -154,7 +154,7 @@
 
     function showView(data, type) {
 
-        debugger
+
         var list = data.data
         var child = "<div class='topLine'>" + "</div>" + "<p class='dissmiss' " + " " + "onclick=" + "'onDissmissclick()'" + ">" + '取消' + "</p>"
 
@@ -252,7 +252,7 @@
         <form class="form">
             <p class="font2" color="#FF0000 ">*</p>
             <p class="font3" color="#FF0000 ">姓 名:</p>
-            <input class="input" name="u_name" id="u_name" v-model="message " placeholder="请输入被访人姓名 ">
+            <input class="input" name="u_name" id="u_name" v-model="message " placeholder="请输入被访人姓名 " ,value="#cccccc">
         </form>
         <hr color="#cccccc" size="1px" />
 
@@ -289,7 +289,7 @@
         <div class="form2">
             <p class="font2" color="#FF0000 ">*</p>
             <p class="font3" color="#FF0000 ">房间号:</p>
-            <input class="input" id="room" id="u_fjh" v-model="message " placeholder="请输入被访人房间号 ">
+            <input class="input" id="room" id="u_fjh" v-model="message " placeholder="请输入被访人房间号 " ,value="#cccccc">
         </div>
         <hr color="#cccccc" size="1px" ma/>
 
@@ -300,7 +300,7 @@
         <div class="form2">
             <p class="font2" color="#FF0000 ">*</p>
             <p class="font3" color="#FF0000 ">手机号:</p>
-            <input class="input" id="phone" v-model="message " placeholder="请输入被访人手机号 ">
+            <input class="input" id="phone" v-model="message " placeholder="请输入被访人手机号 " ,value="#cccccc">
         </div>
         <hr color="#cccccc" size="1px" />
 
@@ -313,7 +313,7 @@
         <div class="form">
             <p class="font2" color="#FF0000 ">*</p>
             <p class="font3" color="#FF0000 ">姓 名:</p>
-            <input class="input" id="ownername" v-model="message " placeholder="请输入访客姓名 ">
+            <input class="input" id="ownername" v-model="message " placeholder="请输入访客姓名 " ,value="#cccccc">
         </div>
         <hr color="#cccccc" size="1px" />
 
@@ -324,7 +324,7 @@
         <div class="form2">
             <p class="font2" color="#FF0000 ">*</p>
             <p class="font3" color="#FF0000 ">身份证:</p>
-            <input class="input" id="identification" v-model="message " placeholder="请输入访客身份证号 ">
+            <input class="input" id="identification" v-model="message " placeholder="请输入访客身份证号 " ,value="#cccccc">
         </div>
         <hr color="#cccccc" size="1px" />
 
@@ -334,7 +334,7 @@
         <div class="form2">
             <p class="font2" color="#FF0000 ">*</p>
             <p class="font3" color="#FF0000 ">手机号:</p>
-            <input class="input" id="ownerphone" v-model="message" placeholder="请输入访客手机号 ">
+            <input class="input" id="ownerphone" v-model="message" placeholder="请输入访客手机号 " ,value="#cccccc">
         </div>
         <hr color="#cccccc" size="1px" />
 
